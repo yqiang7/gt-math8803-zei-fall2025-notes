@@ -1,0 +1,335 @@
+\chapter{Oct.~20 --- Representations of \texorpdfstring{$\mathfrak{sl}(2, \C)$}{sl(2, C)}}
+
+\section{Irreducible Representations of \texorpdfstring{$\mathfrak{sl}(2, \C)$}{sl(2, C)}}
+\begin{remark}
+  Consider $\mathfrak{sl}(2, \C), \SL(2, \C), \mathfrak{su}(2), \SU(2)$.
+  Recall from last time that the categories
+  of complex representations
+  of these Lie groups and Lie algebras
+  are equivalent and completely reducible.
+
+  We will now study (finite-dimensional)
+  irreducible representations of
+  $\mathfrak{sl}(2, \C)$. Recall that
+  $\mathfrak{sl}(2, \C)$ has a basis
+  given by
+  \[
+    h = \begin{pmatrix}
+      1 & 0 \\
+      0 & -1
+    \end{pmatrix}, \quad
+    e = \begin{pmatrix}
+      0 & 1 \\
+      0 & 0
+    \end{pmatrix}, \quad
+    f = \begin{pmatrix}
+      0 & 0 \\
+      1 & 0
+    \end{pmatrix},
+  \]
+  with relations
+  $[e, f] = h$, $[h, e] = 2e$, and
+  $[h, f] = -2f$.
+\end{remark}
+
+\begin{definition}
+  Let $V$ be a representation of
+  $\mathfrak{sl}(2, \C)$. A vector
+  $v \in V$ is called a
+  \emph{vector of weight $\lambda$}
+  (for $\lambda \in \C$) if it is an
+  eigenvector for $h$ with eigenvalue
+  $\lambda$, i.e. $hv = \lambda v$.
+  Denote by $V[\lambda]$ the subspace of
+  vectors with eigenvalue $\lambda$.
+\end{definition}
+
+\begin{lemma}\label{lem:weight-shift}
+  $e V[\lambda] \subseteq V[\lambda + 2]$
+  and $f V[\lambda] \subseteq V[\lambda - 2]$.
+\end{lemma}
+
+\begin{proof}
+  Let $v \in V[\lambda]$. Then
+  $hv = \lambda$, so we have
+  \[
+    hev = ehv + [h, e] v
+    = ehv + 2e v
+    (\lambda + 2) ev,
+  \]
+  so $ev \in V[\lambda + 2]$. This
+  proves the first statement, and
+  one can prove the second similarly.
+\end{proof}
+
+\begin{theorem}
+  Every finite-dimensional representation
+  $V$ of $\mathfrak{sl}(2, \C)$
+  can be written in the form
+  \[
+    V = \bigoplus_\lambda V[\lambda].
+  \]
+  Such a decomposition is called the
+  \emph{weight decomposition} of $V$.
+\end{theorem}
+
+\begin{proof}
+  Since every representation for
+  $\mathfrak{sl}(2, \C)$ is
+  completely reducible, it suffices to
+  prove the statement for irreps.
+  So let $V$ be irreducible.
+  Let $V' = \sum_\lambda V[\lambda] = \bigoplus_\lambda V[\lambda]$.
+  By Lemma \ref{lem:weight-shift}, $V'$ is
+  stable under the
+  actions of $e, f$, so it is a subrepresentation
+  of $V$. Since $V$ is irreducible,
+  $V' = V$.
+\end{proof}
+
+\begin{remark}
+  Let $\lambda$ be a weight of $V$
+  (i.e. $V[\lambda] \ne 0$) which is
+  maximal in the following sense:
+  \[
+    \re \lambda
+    \ge \re \lambda' \quad
+    \text{for all weights } \lambda' \text{ of $V$}.
+  \]
+  Then the corresponding eigenvector
+  $v \in V[\lambda]$ is called the
+  \emph{highest weight vector}, and it
+  always exists for finite-dimensional
+  $V$.
+\end{remark}
+
+\begin{lemma}\label{lem:formulas-highest-weight}
+  Assume $v \in V[\lambda]$ is the
+  highest weight vector. Then
+  \begin{enumerate}
+    \item $ev = 0$.
+    \item $v^k := f^k v / k!$
+      (for $k \ge 0$) satisfies the following
+      formulas:
+      \[
+        hv^k = (\lambda - 2k)v^k, \quad
+        ev^k = (\lambda - k + 1) v^{k - 1}, \quad
+        f v^k = (k + 1) v^{k + 1}.
+      \]
+  \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+  We prove the second formula in (2), the
+  rest is left as an exercise. We induct
+  on $k$. For $k = 1$,
+  \[
+    ev^1 = ef v = [e, f] v + fe v
+    = hv = \lambda v.
+  \]
+  Now assume it is true for $k$, and
+  we prove the formula for $k + 1$. We
+  have
+  \begin{align*}
+    e v^{k + 1}
+    = \frac{1}{k + 1} ef v^k
+    &= \frac{1}{k + 1}(hv^k + fe v^k)
+    = \frac{1}{k + 1}((\lambda - 2k)v^k + (\lambda - k + 1) f v^{k - 1}) \\
+    &= \frac{1}{k + 1}(\lambda - 2k + (\lambda - k + 1) k)v^k
+    = (\lambda - k) v^k,
+  \end{align*}
+  which is the corresponding formula for
+  $k + 1$.
+\end{proof}
+
+\begin{lemma}
+  Let $\lambda \in \C$. Define
+  $M_\lambda$ (the \emph{Verma module})
+  to be the infinite-dimensional vector space
+  with basis $v^0, v^1, v^2, \dots$. Then
+  \begin{enumerate}
+    \item The formulas from
+      Lemma \ref{lem:formulas-highest-weight}(2)
+      and $ev^0 = 0$ define the structure of
+      an infinite-dimensional representation
+      on $M_\lambda$.
+    \item If $V$ is a finite-dimensional
+      irreducible module of $\mathfrak{sl}(2, \C)$
+      which contains a nonzero highest
+      weight vector of highest weight
+      $\lambda$, then $V = M_\lambda / W$,
+      where $W$ is some subrepresentation.
+  \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+  This follows from Lemma
+  \ref{lem:formulas-highest-weight}.
+\end{proof}
+
+\begin{theorem}
+  We have the following:
+  \begin{enumerate}
+    \item For any $n \in \Z_{\ge 0}$, let
+      $V_n$ be the finite-dimensional
+      vector space with basis
+      $v^0, v^1, \dots, v^n$. Define an
+      action of $\mathfrak{sl}(2, \C)$ on
+      $V$ by the formulas from
+      Lemma \ref{lem:formulas-highest-weight}(2),
+      with $f v^n = 0$ and $ev^0 = 0$.
+      Then $V_n$ is an irreducible
+      representation.
+    \item For $n \ne m$, the representations
+      $V_n, V_m$ are non-isomorphic.
+    \item Every finite-dimensional irrep
+      of $\mathfrak{sl}(2, \C)$ is
+      isomorphic to one of the
+      $V_n$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  (1) Start with the Verma module $M_\lambda$
+  for $\lambda = n$. Consider
+  the subspace
+  \[
+    M' = \Span\{v^{n + 1}, v^{n + 2}, \dots\}.
+  \]
+  Note that $ev^{n + 1} = (n + 1 - (n + 1))v^n = 0$.
+  Then $M_n / M'$ is a finite-dimensional
+  representation with basis
+  $v^0, v^1, \dots, v^n$, so it is
+  isomorphic to $V_n$. Now we show that
+  it is irreducible: If there is a
+  subrepresentation $V' = \Span\{v_i\}$
+  where $\{v_i\} \subseteq \{v^0, \dots, v^n\}$,
+  then $V' = V_n$ since otherwise
+  $V'$ is not invariant under the action of
+  $e, f, h$. Thus
+  $V_n$ is irreducible.
+
+  (2) This follows since $V_n$ and
+  $V_m$ have different dimensions.
+\end{proof}
+
+\begin{remark}
+  The actions of $f$ and $e$ have the
+  following actions on the $V_n$ ($f$ on
+  top, $e$ on bottom):
+  \begin{center}
+  \begin{tikzcd}
+    V_n \ar[r, "1", bend right=30, swap] & V_{n - 1} \ar[r, "2", bend right=30, swap] \ar[l, "n", bend right=30, swap] & V_{n - 2} \ar[r, "3", bend right=30, swap] \ar[l, "n - 1", bend right=30, swap] & \cdots \ar[r, "n - 1", bend right=30, swap] \ar[l, "n - 2", bend right=30, swap] & V_1 \ar[r, "n", bend right=30, swap] \ar[l, "2", bend right=30, swap] & V_0 \ar[l, "1", bend right=30, swap]
+  \end{tikzcd}
+  \end{center}
+  Note that the eigenvalues of $h$
+  are $n, n - 2, \dots, -n$.
+
+  For $\SU(2)$, we have
+  $J_z = \frac{1}{2} h$,
+  with eigenvalues
+  $\frac{n}{2}, \dots, -\frac{n}{2}$.
+  This is called the \emph{spin}
+  in quantum mechanics.
+  We have seen that any representation
+  of $\mathfrak{su}(2)$ lifts to
+  a representation of $\SU(2)$.
+  A representation of $\mathfrak{so}(3, \R)$
+  will lift to a representation of
+  $\SO(3, \R)$ if and only if
+  the spin is an integer.
+\end{remark}
+
+\begin{theorem}
+  Let $V$ be any finite-dimensional
+  complex representation of
+  $\mathfrak{sl}(2, \C)$. Then
+  \begin{enumerate}
+    \item $V$ admits a weight
+      decomposition with respect to
+      integer weights:
+      $V = \bigoplus_{n \in \Z} V[n]$.
+    \item $\dim V[n] = \dim V[-n]$, and
+      $e^n : V[n] \to V[-n]$,
+      $f^n : V[-n] \to V[n]$
+      are isomorphisms.
+  \end{enumerate}
+\end{theorem}
+
+\section{The Universal Enveloping Algebra}
+
+\begin{definition}
+  Let $\g$ be a Lie algebra over some field
+  $\K$. The
+  \emph{universal enveloping algebra}
+  $U(\g)$ of $\g$ over $\K$ is the
+  associative algebra with unit
+  over $\K$ with generators
+  $i(x)$ for $x \in \g$,
+  subject to the relations
+  \begin{enumerate}
+    \item $i(x) + i(y) = i(x + y)$,
+    \item $i(cx) = ci(x)$ for $c \in \K$,
+    \item $i(x) i(y) - i(y) i(x) = i([x, y])$.
+  \end{enumerate}
+\end{definition}
+
+\begin{remark}
+  We will see that the map
+  $i : \g \to U(\g)$ is injective, so
+  we will just write $x$ instead of $i(x)$.
+\end{remark}
+
+\begin{remark}
+  Without the condition (3), this is just
+  the tensor algebra
+  $T \g = \bigoplus_{n \ge 0} g^{\otimes n}$.
+  So we can say
+  \[
+    U(\g) = T \g / \{xy - yx - [x, y]\}.
+  \]
+\end{remark}
+
+\begin{example}
+  Let $\g$ be a commutative Lie algebra.
+  Then $U(\g)$ is generated by $x \in \g$
+  subject to conditions
+  $\{xy = yx\}$. Thus $U(\g) = S(\g)$, the
+  symmetric algebra on $\g$. One can view $S(\g)$ as polynomials on the dual space $\g^*$. From this perspective, $S(\g) = \K[x_1, \dots, x_n]$, where $x_1, \dots, x_n$ form a basis of $\g$.
+  In particular, this shows that
+  $U(\g)$ is infinite-dimensional.
+\end{example}
+
+\begin{example}
+  Recall that $\mathfrak{sl}(2, \C)$
+  is the associative algebra generated
+  by $1, e, f, h$ subject to
+  \[
+    \begin{cases}
+      ef - fe = h, \\
+      he - eh = 2e, \\
+      hf - fh = -2f.
+    \end{cases}
+  \]
+  Note that the product $h^m e^k f^\ell$
+  is \emph{not} a matrix multiplication (we have
+  $e^2 = f^2 = 0$ as matrices).
+\end{example}
+
+\begin{theorem}
+  Let $A$ be an associative algebra with
+  unit over $\K$, and let $\rho : \g \to A$
+  be a linear map satisfying
+  $\rho(x) \rho(y) - \rho(y) \rho(x) = \rho([x, y])$.
+  Then $\rho$ can be extended in a unique
+  way to a morphism of associative algebras,
+  i.e. to a map $\rho : U(\g) \to A$.
+\end{theorem}
+
+\begin{corollary}
+  Any representation of $\g$ (not necessarily
+  finite-dimensional) has a canonical
+  structure of a $U(\g)$-module. Conversely,
+  every $U(\g)$-module has a canonical
+  structure of a $\g$-representation.
+\end{corollary}
