@@ -294,7 +294,7 @@
     \item For large enough $n$, all commutators
       of the form
       \[
-        [\dots, [[x_1, x_2], [x_3, x_4]], \dots,]
+        [\dots [[x_1, x_2], [x_3, x_4]] \dots]
       \]
       ($2^n$ terms) is zero.
   \end{enumerate}
@@ -339,7 +339,7 @@
     \item For large enough $n$, all
       commutators of the form
       \[
-        [[\dots, [[x_1, x_2], x_3], x_4], \dots x_n]
+        [\dots [[x_1, x_2], x_3], x_4] \dots x_n]
       \]
       ($n$ terms) are zero.
   \end{enumerate}
@@ -357,3 +357,32 @@
   The non-strictly lower triangular
   matrices form a solvable Lie algebra.
 \end{example}
+
+\begin{theorem}
+  We have the following:
+  \begin{enumerate}
+    \item A real Lie algebra is
+      solvable (resp. nilpotent) if
+      and only if its complexification
+      is solvable (resp. nilpotent).
+    \item If $\g$ is solvable, then
+      any subalgebra and any quotient
+      are solvable. The same applies
+      to nilpotence.
+    \item If $\g$ is nilpotent, then
+      $\g$ is solvable.
+    \item If $I \subseteq \g$ is an ideal
+      and both $I$, $\g / I$ are solvable,
+      then $\g$ is solvable.
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  (4) Consider the map $\varphi : \g \to \g / I$,
+  then $\varphi(D^n \g) = D^n \g / I = 0$
+  for $n$ large enough. So
+  $D^n \g \subseteq I$, and
+  $D^{n + k} \g \subseteq D^k I$, which
+  vanishes for $k$ large enough.
+  So $\g$ is solvable.
+\end{proof}

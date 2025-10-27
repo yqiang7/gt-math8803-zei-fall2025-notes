@@ -1,0 +1,330 @@
+\chapter{Oct.~27 --- Semisimple Lie Algebras}
+
+\section{Lie's and Engel's Theorem}[\label{thm:lies-theorem}]
+
+\begin{theorem}[Lie's theorem]
+  Let $\rho : \g \to \gl(V)$ be a complex
+  representation of some real or
+  complex solvable Lie algebra. Then there
+  exists a basis where all $\rho(x)$ 
+  are given by upper-triangular matrices.
+\end{theorem}
+
+\begin{prop}\label{prop:common-eigenvector}
+  Let $\rho : \g \to \gl(V)$ be a complex
+  representation of a solvable Lie algebra
+  $\g$. Then there exists a vector $v \in V$ 
+  which is a common eigenvector for all
+  $\rho(x)$ for $x \in \g$.
+\end{prop}
+
+\begin{proof}
+  The proof is by induction on $\dim \g$.
+  If $\g$ is solvable, then $[\g, \g] \ne \g$.
+  Consider the subspace $\g'$ of
+  codimension $1$ which contains
+  $[\g, \g]$, and
+  write $\g = \g' \oplus \C x$. So $\g'$
+  is an ideal. 
+
+  We assume for induction that there exists
+  a common eigenvector $v \in V$, i.e.
+  for all $\rho(h)$ for $h \in \g'$, we have
+  $\rho(h)v = \lambda(h)v$. Then we can write
+  \[
+    W = \Span\{v, \rho(x) v, \rho(x)^2 v, \dots\}
+    = \{v^0, v^1, v^2, \dots\}.
+  \]
+  We claim that $W$ is stable
+  under any action of $\mathfrak{h} \in \g'$. To see
+  this, write
+  \[
+    hv^k = \lambda(h) v^k
+    + \sum_{\ell < k} a_{k, \ell} v^\ell.
+  \]
+  We prove this by induction:
+  \[
+    hv^k = hxv^{k - 1}
+    = xhv^{k - 1} + [h, x] v^{k - 1}
+    = \lambda(h) x v^{k - 1}
+    + \lambda ([h, x]) v^{k - 1} + \dots.
+  \]
+  this formula holds by induction on $k$,
+  so $W$ is stable.
+  Now assume $n$ is the smallest integer
+  such that $v^{n + 1} \in \Span\{v^0, v^1, \dots, v^n\}$.
+  Therefore,$v^0, v^1, \dots, v^n$ 
+  form a basis of $W$. Therefore,
+  $\rho(h)$ is upper-triangular
+  in this basis, and moreover,
+  $\tr \rho(h) = (n + 1) \lambda(h)$. Then
+  \[
+    \tr_w([\rho(x), \rho(h)]) = 0,
+  \]
+  so $\lambda([h, x]) = 0$ for all $\mathfrak{h} \in \g'$.
+  Then $h v^k = \lambda(h) v^k$, so we
+  can choose the vector as an eigenvector
+  of $x$.
+\end{proof}
+
+\begin{proof}[Proof of \ref{thm:lies-theorem}]
+  The proof is by induction on $\dim V$.
+  By Proposition \ref{prop:common-eigenvector},
+  there exists a common eigenvector
+  $v \in V / \C v$. By the induction hypothesis,
+  there exists a basis $v_3, v_2, \dots$
+  of $\C$ such that the action of
+  $\g$ is upper-triangular. Now choose a
+  preimage $\widehat{v_i}$ for any $v_i$.
+  The action of any $x \in \g$ in the basis
+  $v, \widehat{v}_1, \widehat{v}_2, \dots$
+  will be upper-triangular.
+\end{proof}
+
+\begin{corollary}
+  We have the following:
+  \begin{enumerate}
+    \item Any irreducible complex representation
+      of a solvable Lie algebra is $1$-dimensional.
+    \item If  a complex Lie algebra $\g$ 
+      is solvable, then there exists a sequence
+      \[
+        0 \subseteq I_1 \subseteq I_2 \subseteq \dots \subseteq I_n = \g,
+      \]
+      where each $I_k$ is an ideal in
+      $\g$ and $I_{k + 1} / I_k$
+    is $1$-dimensional.
+  \item $\g$ is solvable if and only if
+    $[\g, \g]$ is nilpotent.
+  \end{enumerate}
+\end{corollary}
+
+\begin{proof}
+  If $[\g, \g]$ is nilpotent, then
+  $\g$ is solvable. Now assume
+  $g$ is solvable and assume $\g$ 
+  is complex. Applying Lie's theorem to the
+  adjoint representation, we have
+  \[
+    \ad_g \subseteq \mathfrak{b} = \text{upper-triangular matrices}...,
+  \]
+  so $[\ad_\g, \ad_\g] = \ad_{[\g, \g]} \subseteq \eta$, the
+  set of strictly upper-triangular matrices. Thus
+  \[
+    [x_1, [\dots [x_{n - 1}, x_n]]] = 0
+  \]
+  for sufficiently large $n$,
+  so $[y, [x_1, \dots [x_{n - 1}, x_n]]] = 0$ for
+  sufficiently large $n$. So $[\g, \g]$ is nilpotent.
+\end{proof}
+
+\begin{theorem}
+  Let $V$ be a finite-dimensional 
+  vector space (either real or complex)
+  and $\g \subseteq \gl(V)$ be a Lie subalgebra
+  which consists of nilpotent operators.
+  Then there exists a basis in $V$ such that
+  all operators $x \in \g$ are strictly
+  upper-triangular.
+\end{theorem}
+
+\begin{theorem}[Engel's theorem]
+  A Lie algebra is nilpotent if and only
+  if for every $x \in \g$ the operator
+  $\ad_x \in \End(\g)$ is nilpotent.
+\end{theorem}
+
+\begin{proof}
+  If $\g$ is nilpotent, then
+  $[x, [x, \dots, [x, y]]] = 0$, so
+  $\ad^n_x y = 0$.
+  If $\ad_x$ is nilpotent for all $x$, then
+  by the previous theorem there exists
+  a sequence of subspaces
+  \[
+    0 \subseteq \g_1 \subseteq \g_2 \subseteq \dots \subseteq \g_n = \g
+  \]
+  such that $\ad_x g_i = \subseteq \g_{i - 1}$,
+  so $\g_i$ is an ideal in $\g$ and
+  $[\g, \g_i] \subseteq \g_{i - 1}$.
+\end{proof}
+
+\section{Semisimple Lie Algebras}
+
+\begin{definition}
+  A Lie algebra is called \emph{semisimple}
+  if it contains no nonzero solvable ideals.
+\end{definition}
+
+\begin{remark}
+  A semisimple Lie algebra has
+  $\mathfrak{z}(\g) = 0$.
+\end{remark}
+
+\begin{definition}
+  A Lie algebra is called \emph{simple}
+  if it is not abelian and contains
+  no ideals except itself and $\{0\}$.
+\end{definition}
+
+\begin{lemma}
+  Any simple Lie algebra is semisimple.
+\end{lemma}
+
+\begin{proof}
+  If $\g$ is simple, then it has no
+  ideals except for $\g$ and $\{0\}$.
+  So if $\g$ contains a nonzero solvable
+  ideal, then it must coincide with
+  $\g$. But by solvability,
+  the ideal $[\g, \g] \ne \g$, a
+  contradiction.
+\end{proof}
+
+\begin{example}
+  We claim that $\mathfrak{sl}(2, \C)$ is simple.
+  Notice that $\ad_h$ is
+  diagonal in the basis $\{e, f, h\}$:
+  \[
+    \ad_h = \diag(2, -2, 0).
+  \]
+  So any ideal must also be stable under
+  $\ad_h$.
+  We use the following lemma from
+  linear algebra:
+  \begin{quote}
+    \vspace{-2em}
+    \begin{lemma}
+      If $A$ is diagonalizable with
+      different eigenvalues
+      $A v_i = \lambda_i v_i$
+      with $\lambda_i \ne \lambda_j$ for
+      $i \ne j$, then the only
+      subspaces invariant under
+      $A$ are spanned by eigenvectors.
+    \end{lemma}
+  \end{quote}
+  So any ideal in $\mathfrak{sl}(2, \C)$
+  must be spanned by $e, f, h$.
+  Assume first the ideal contains $h$.
+  Since $[h, e] = 2e$ and
+  $[h, f] = 2f$, this ideal is
+  $\mathfrak{sl}(2, \C)$. If it contains
+  $e$, then $[e, f] = h$, so this ideal
+  is also $\mathfrak{sl}(2, \C)$.
+  One can check the same for $f$, so
+  we see that $\mathfrak{sl}(2, \C)$ is
+  simple.
+\end{example}
+
+\begin{prop}
+  In any Lie algebra $\g$, there exists a
+  unique solvable ideal that contains any
+  other solvable ideal. This solvable
+  ideal is called the \emph{radical}
+  of $\g$ and is denoted $\rad(\g)$.
+\end{prop}
+
+\begin{proof}
+  First we show existence. If
+  $I_1, I_2$ are solvable, then so
+  is $I_1 + I_2$ since we can write
+  \[
+    (I_1 + I_2) / I_1 = I_1 / (I_1 \cap I_2),
+  \]
+  so $I_1 + I_2$ contains $I_1$ and
+  $I_1 / (I_1 \cap I_2)$, which are both solvable.
+  By induction, any sum of
+  solvable ideals
+  is solvable. Thus we can take
+  $\rad(\g) = \sum I$. Uniqueness is clear.
+\end{proof}
+
+\begin{remark}
+  We can also say $\g$  is semisimple
+  if $\rad(\g) = \{0\}$.
+\end{remark}
+
+\begin{theorem}
+  For any Lie algebra $\g$, the quotient
+  $\g / {\rad(\g)}$ is semisimple.
+  Conversely, if $\mathfrak{b}$ is a
+  solvable ideal in $\g$ such that
+  $\g / \mathfrak{b}$ is semisimple,
+  then $\mathfrak{b} = \rad(\g)$.
+  In particular, we have an exact sequence
+  \begin{center}
+    \begin{tikzcd}
+      0 \ar[r] & \mathfrak{b}
+      \ar[r] & \g
+      \ar[r] & \g_{\mathrm{ss}}
+      \ar[r] & 0
+    \end{tikzcd}
+  \end{center}
+  where $\mathfrak{b}$ is solvable and
+  $\g_{\mathrm{ss}}$ is semisimple.
+\end{theorem}
+
+\begin{theorem}[Levi]
+  Any Lie algebra can be written as
+  a direct sum $\g = \rad(\g) \oplus \g_{\mathrm{ss}}$,
+  where $\g_{\mathrm{ss}}$ is semisimple
+  subalgebra (but not necessarily an
+  ideal in $\g$).
+\end{theorem}
+
+\begin{example}
+  Consider the semidirect product
+  $G = \SO(3, \R) \ltimes \R^3$ given by
+  \[
+    \vec{x} \mapsto A \vec{x} + \vec{b},
+  \]
+  for $A \in \SO(3, \R)$ and
+  $\vec{b} \in \R^3$. Then we have
+  $\g = \mathfrak{so}(3, \R) \oplus \R^3$ with the
+  relations
+  \[
+    [(A_1, b_1), (A_2, b_2)]
+    = ([A_1, A_2], A_1 b_2 - A_2 b_1),
+  \]
+  for 
+  $A_i \in \mathfrak{so}(3, \R)$
+  and
+  $b_1, b_2 \in \R^3$.
+\end{example}
+
+\begin{theorem}
+  Let $V$ be an irreducible complex
+  representation of $\g$. Then any
+  $h \in \rad(\g)$ acts in $V$ by
+  scalar operators $\rho(h) = \lambda(h) \id$.
+  Also, any  $h \in [\g, \rad(\g)]$
+  acts by zero.
+\end{theorem}
+
+\begin{proof}
+  We have seen that there is a common
+  eigenvector $v \in V$ for all
+  $h \in \rad(\g)$, so
+  $\rho(h) v = \lambda(h) v$. This gives a map
+  $\lambda : \rad(\g) \to \C$. Define
+  $V_\lambda = \{w \in V : \rho(h) w = \lambda(h) w \text{ for all } h \in \rad(\g)\}$.
+  Using a similar argument to before,
+  we get that $\rho(x) V_\lambda \subseteq V_\lambda$
+  for all $x \in \g$, so
+  $V_\lambda$ is a subrepresentation.
+  Since $V_\lambda$ is nonzero and
+  $V$ is irreducible, we have
+  $V = V_{\lambda}$. The second
+  statement is trivial.
+\end{proof}
+
+\begin{definition}
+  A Lie algebra is called \emph{reductive}
+  if $\rad(\g) = \mathfrak{z}(\g)$.
+  In other words, $\g / \mathfrak{z}(\g)$
+  is semisimple,
+  or $\g = \mathfrak{z}(\g) \oplus \g_{\mathrm{ss}}$
+  for some semisimple subalgebra
+  $\g_{\mathrm{ss}} \subseteq \g$.
+\end{definition}
