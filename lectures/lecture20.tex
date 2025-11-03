@@ -1,0 +1,372 @@
+\chapter{Oct.~29 --- Semisimple Lie Algebras, Part 2}
+
+\section{Invariant Bilinear Forms}
+
+\begin{definition}
+  Recall that a bilinear form $B$
+  on $\g$ is \emph{invariant} if
+  \[
+    B(\ad_x y, z) + B(y, \ad_x z) = 0.
+  \]
+\end{definition}
+
+\begin{lemma}
+  Let $B$ be an invariant bilinear
+  form on $\g$
+  and $I \subseteq \g$ an ideal. Then
+  \[
+    I^\perp
+    = \{x \in \g : B(x, y) = 0 \text{ for all } y \in \g\}
+  \]
+  is also an ideal in $\g$. In particular,
+  $\g^\perp = \ker B$ is an ideal.
+\end{lemma}
+
+\begin{remark}
+  In general,
+  $\g \ne I \oplus I^\perp$ as we may
+  have $I \cap I^\perp \ne 0$.
+\end{remark}
+
+\begin{example}
+  Let $\g = \gl(n, \C)$
+  and $B(x, y) = \tr(xy)$. Then
+  \[
+    \tr([x, y], z)
+    + \tr(y, [x, z])
+    = \tr(xyz - yxz + yxz - yzx)
+    = \tr([x, yz]) = 0,
+  \]
+  so $B$ is invariant. An even easier
+  proof of this is $\tr(gyg^{-1} gzg^{-1}) = \tr(yz)$
+  for any $g \in \GL(n, \C)$, so
+  $B$ is invariant under the adjoint
+  action of $\GL(n, \C)$, hence it is
+  also invariant under the action by $\gl(n, \C)$.
+\end{example}
+
+\begin{prop}
+  Let $V$ be a representation
+  of $\g$ with $\rho : \g \to \gl(V)$, and
+  define
+  \[
+    B_V(x, y) = \tr_V(\rho(x) \rho(y)).
+  \]
+  Then $B$ is a symmetric invariant
+  bilinear form on $\g$.
+\end{prop}
+
+\begin{theorem}
+  Let $\g$ be a Lie algebra with
+  a representation $V$ such that
+  the form $B_V$ is non-degenerate.
+  Then $\g$ is reductive.
+\end{theorem}
+
+\begin{proof}
+  We need to show that
+  $[\g, \rad(\g)] = 0$.
+  Let $x \in [\g, \rad(\g)]$, so
+  $x$ acts as $0$ in any irreducible
+  representation. Thus
+  $x \in \ker B_V$ for any
+  irreducible $V$. Now if we have a
+  short exact sequence
+  \begin{center}
+    \begin{tikzcd}
+      0 \ar[r] & V_1 \ar[r] & W \ar[r] & V_2 \ar[r] & 0
+    \end{tikzcd}
+  \end{center}
+  then $B_W = B_{V_1} + B_{V_2}$, so
+  $x \in \ker B_V$ for all $V$.
+  Thus $x = 0$, since $B_V$ is
+  non-degenerate for some $V$.
+\end{proof}
+
+\begin{theorem}
+  All classical Lie algebras are
+  reductive. Moreover,
+  $\mathfrak{sl}(n, \K)$, $\mathfrak{so}(n, \K)$ (for $n > 2$),
+  $\mathfrak{su}(n)$,
+  $\mathfrak{sp}(n, \K)$ are semisimple;
+  $\gl(n, \K)$, $\mathfrak{u}(n)$
+  have 1-dimensional center, and
+  $\gl(n, \K) = {\K \id} \oplus {\mathfrak{sl}(n, \K)}$,
+  $\mathfrak{u}(n) = {i \R \id} \oplus {\mathfrak{su}(n)}$.
+\end{theorem}
+
+\begin{proof}
+  Take $B_V$ with $V$ being the
+  definition representation, i.e.
+  \[
+    V =
+    \begin{cases}
+      \K^n & \text{for all except $\mathfrak{sp}(n, \K)$}, \\
+      \K^{2n} & \text{for $\mathfrak{sp}(n, \K)$}.
+    \end{cases}
+  \]
+  Then we can check that:
+  \begin{itemize}
+    \item for $\gl(n, \K)$, we have
+      $B(x, y) = \tr(x, y) = \sum_{i, j} x_{i, j} y_{j, i}$,
+      which is non-degenerate;
+    \item for $\mathfrak{sl}(n, \K)$,
+      it follows from the
+      $\gl(n, \K)$ case and
+      $\gl(n, \K) = {\K \id} \oplus {\mathfrak{sl}(n, \K)}$;
+    \item for $\mathfrak{so}(n, \K)$,
+      we have $B(x, y) = \sum x_{i, j} y_{j, i} = - 2\sum_{i < j} x_{i, j} y_{i, j}$,
+      which is non-degenerate;
+    \item for $\mathfrak{u}(n)$, we have
+      $B(x, y) = - \tr(x \overline{y}^t) = - \sum_{i < j} x_{i, j} \overline{y}_{i, j}$,
+      which is non-degenerate.
+    \item for $\mathfrak{su}(n)$, it follows
+      from the result for $\mathfrak{u}(n)$
+      since $\mathfrak{su}(n) \subseteq \mathfrak{u}(n)$.
+  \end{itemize}
+  Note that the bilinear form
+  for $\mathfrak{u}(n, \K)$
+  is negative-definite.
+  The case $\mathfrak{sp}(n, \K)$
+  is left as an exercise.
+\end{proof}
+
+\section{Cartan's Criterion}
+
+\begin{definition}
+  The \emph{Killing form} on $\g$
+  is the bilinear form
+  \[
+    K(x, y) = \tr_\g(\ad_x \ad_y).
+  \]
+\end{definition}
+
+\begin{remark}
+  Let $\mathfrak{h}$ be a subalgebra in $\g$.
+  We write $K^{\mathfrak{h}}$ for
+  the Killing form with
+  taking the trace over $\mathfrak{h}$:
+  \begin{align*}
+    K^{\mathfrak{h}}
+    : \mathfrak{h} \otimes \mathfrak{h}
+    &\longrightarrow \K \\
+    (x, y)
+    &\longmapsto \tr_{\End \mathfrak{h}}(\ad_x \ad_y),
+  \end{align*}
+  and $K^\g$ for the
+  Killing form with
+  taking the trace over $\g$:
+  \begin{align*}
+    K^{\g}
+    : \mathfrak{h} \otimes \mathfrak{h}
+    &\longrightarrow \K \\
+    (x, y)
+    &\longmapsto \tr_{\End \g}(\ad_x \ad_y).
+  \end{align*}
+\end{remark}
+
+\begin{exercise}
+  Show that if $I \subseteq \g$ is an ideal,
+  then $K^I$ coincides with
+  $K^\g : I \times I \to \K$.
+\end{exercise}
+
+\begin{example}
+  Let $\g = \mathfrak{sl}(2, \C)$ with
+  basis $\{e, h, f\}$. We have
+  \[
+    \ad_e =
+    \begin{pmatrix}
+      0 & -2 & 0 \\
+      0 & 0 & 1 \\
+      0 & 0 & 0
+    \end{pmatrix}, \quad
+    \ad_h =
+    \begin{pmatrix}
+      2 & 0 & 0 \\
+      0 & 0 & 0 \\
+      0 & 0 & -2
+    \end{pmatrix}, \quad
+    \ad_f =
+    \begin{pmatrix}
+      0 & 0 & 0 \\
+      -1 & 0 & 0 \\
+      0 & 2 & 0
+    \end{pmatrix}.
+  \]
+  Then $K(h, h) = 8$ and
+  $K(e, f) = K(f, e) = 4$.
+\end{example}
+
+\begin{theorem}[Cartan's criterion for solvability]\label{thm:cartan-solvable}
+  A Lie algebra $\g$ is solvable
+  if and only if
+  \[K([\g, \g], \g) = 0.\]
+\end{theorem}
+
+\begin{theorem}[Cartan's criterion for semisimplicity]\label{thm:cartan-semisimple}
+  A Lie algebra is semisimple
+  if and only if its Killing form
+  is non-degenerate.
+\end{theorem}
+
+\begin{theorem}\label{thm:decomposition}
+  Let $V$ be a finite-dimensional
+  vector space.
+  \begin{enumerate}
+    \item Any linear operator
+      $A$ can be uniquely written as a sum
+      \[
+        A = A_s + A_n,
+      \]
+      where $A_s A_n = A_n A_s$ and
+      $A_s$ is semisimple, $A_n$ is
+      nilpotent.
+    \item For any linear operator
+      $A : V \to V$, define
+      $\ad_A : \End V \to \End V$ by
+      $\ad_A B = AB - BA$. Then
+      \[
+        (\ad_A)_s = \ad A_s,
+      \]
+      and $\ad A_s = P(\ad_A)$ for
+      some polynomial
+      $P \in t \C[t]$.\footnote{Note that $0$ is always an eigenvalue as $\ad_A A = 0$.}
+    \item Define $\overline{A}_s$ to be the
+      operators with complex conjugate
+      eigenvalues as $A_s$, i.e.
+      $A_s v = \lambda v$ if and only if
+      $\overline{A}_s v = \overline{\lambda} v$.
+      Then $\ad \overline{A}_s$
+      can be written in the form
+      $\ad \overline{A}_s = Q(\ad_A)$
+      for some $Q \in t \C[t]$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}[Proof of Theorem \ref{thm:cartan-solvable}]
+  If $\g$ is real, then $\g$ is solvable
+  if and only if $\g_\C$ is solvable,
+  and $K([\g, \g], \g) = 0$
+  if and only if $K([\g_\C, \g_\C], \g_\C) = 0$.
+  So we may assume that $\g$ is complex.
+
+  $(\Rightarrow)$ If $\g$ is
+  solvable, then by Lie's theorem
+  there exists a basis such that all
+  $\ad_x$ are upper-triangular. Then
+  $[\g, \g]$ is strictly upper-triangular,
+  so $K([\g, \g], \g) = 0$.
+
+  $(\Leftarrow)$ We use the following
+  lemma:
+  \begin{quote}
+    \vspace{-2em}
+    \begin{lemma}
+      Let $V$ be a complex vector space
+      and $\g \subseteq \gl(V)$ a Lie
+      subalgebra such that for all
+      $x \in [\g, \g]$ and
+      $y \in \g$, we have
+      $\tr(xy) = 0$. Then
+      $\g$ is solvable.
+    \end{lemma}
+
+    \begin{proof}
+      Since $x \in [\g, \g]$, we can
+      write $x = x_s + x_n$ by
+      Theorem \ref{thm:decomposition}.
+      Then
+      \[
+        \tr(x \overline{x}_s)
+        = \sum \lambda_i \overline{\lambda}_i
+        = \sum |\lambda_i|^2,
+        \tag{$*$}
+      \]
+      where the $\lambda_i$ are the
+      eigenvalues of $x$. Now
+      $x \in [\g, \g]$ implies
+      that $x = \sum_i [y_i, z_i]$, so
+      \[
+        \tr(x \overline{x}_s)
+        = \tr\left(\sum_i [y_i, z_i] \overline{x}_s\right)
+        = - \sum_i \tr(y_i [\overline{x}_s, z_i])
+        = 0,
+      \]
+      where $[\overline{x}_s, z_i] = \ad_{\overline{x}_s} z_i = Q(\ad_{x}) z_i \in [\g, \g]$.
+      Thus $x$ is nilpotent by $(*)$
+      (all of its eigenvalues are zero), which
+      implies $[\g, \g]$ is nilpotent,
+      so $\g$ is solvable.
+    \end{proof}
+  \end{quote}
+  Thus if $K(\g, [\g, \g]) = 0$,
+  then by the lemma $\ad \g \subseteq \gl(\g)$
+  is solvable. So both $\mathfrak{z}(\g)$
+  and $\g / \mathfrak{z}(\g) = \ad \g$
+  are solvable, hence $\g$ is solvable.
+\end{proof}
+
+\begin{proof}[Proof of Theorem \ref{thm:cartan-semisimple}]
+  $(\Leftarrow)$ If
+  $x \in \mathfrak{z}(\g)$, then
+  $\ad_x = 0$, so
+  $x \in \ker(K)$. Thus
+  $\mathfrak{z}(\g) = 0$, so
+  $\g$ is semisimple.
+
+  $(\Rightarrow)$ If
+  $\g$ is semisimple, then
+  take $I = \ker K$. Note that
+  $I$ is an ideal in $\g$, and
+  the restriction of $K$ to $I$ coincides
+  with $K^I$, so $K^I$ is trivial
+  on $I$. Hence $I$ is solvable, so
+  $I = 0$ since $\g$ is semisimple.
+\end{proof}
+
+\begin{theorem}
+  Let $\g$ be a semisimple
+  Lie algebra. If $I \subseteq \g$
+  is an ideal, then there exists an ideal
+  $I'$ such that $\g = I \oplus I'$.
+\end{theorem}
+
+\begin{proof}
+  Let $I^\perp$ be the orthogonal complement
+  of $I$ with respect to $K$, which is
+  also an ideal. Then
+  $I \cap I^\perp$ is an ideal
+  in $\g$ with zero Killing form, so
+  $I \cap I^\perp$ is solvable, which
+  implies $I \cap I^\perp = \{0\}$.
+\end{proof}
+
+\begin{corollary}
+  A Lie algebra is semisimple if and only
+  if it is a direct sum of simple
+  Lie algebras.
+\end{corollary}
+
+\pagebreak
+\begin{corollary}
+  If $\g$ is semisimple, then
+  $[\g, \g] = \g$.
+\end{corollary}
+
+\begin{prop}\label{prop:real-complex-semisimple}
+  Let $\g$ be a real Lie algebra and
+  $\g_\C$ its complexification. Then
+  $\g$ is semisimple if and only if
+  $\g_\C$ is semisimple.
+\end{prop}
+
+\begin{remark}
+  Proposition
+  \ref{prop:real-complex-semisimple}
+  does not hold with
+  ``semisimple'' replaced by ``simple'':
+  We have
+  \[\mathfrak{so}(3, 1)_\C = \mathfrak{sl}(2, \C) \oplus \mathfrak{sl}(2, \C),\]
+  but $\mathfrak{so}(3, 1)$ is simple.
+\end{remark}
