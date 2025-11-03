@@ -1,0 +1,304 @@
+\chapter{Nov.~3 --- Semisimple Lie Algebras, Part 3}
+
+\section{Properties of Semisimple Lie Algebras, Continued}
+\begin{prop}
+  Let $\g = \g_1 \oplus \cdots \oplus \g_k$
+  with $\g_i$ simple. Then any ideal
+  $I$ in $\g$ has the form
+  \[
+    I = \bigoplus_{i \in J} \g_i,
+    \quad J \subseteq \{1, \dots, k\}.
+  \]
+\end{prop}
+
+\begin{proof}
+  The proof is by induction on $k$.
+  Let $\pi_k : \g \to \g_k$, so
+  $\pi_k(I) \subseteq \g_k$.
+  Since $\g_k$ is simple, we
+  either have $\pi_k(I) = 0$ or
+  $\pi_k(I) = \g_k$. In the first case,
+  $I \subseteq \g_1 \oplus \cdots \oplus \g_{k-1}$,
+  so we are done by the induction hypothesis.
+  Otherwise if $\pi_k(I) = \g_k$, we have
+  \[
+    [\g_k, I]
+    = [\g_k, \pi_k(I)]
+    = \g_k.
+  \]
+  Since $I$ is an ideal, this implies
+  $\g_k \subseteq I$, so
+  $I = I' \oplus \g_k$ with
+  $I' \subseteq \g_1 \oplus \cdots \oplus \g_{k-1}$,
+  and again we are done by the induction hypothesis.
+\end{proof}
+
+\begin{corollary}
+  Any ideal in a semisimple Lie algebra
+  is semisimple. Also, any quotient
+  of a semisimple Lie algebra is semisimple.
+\end{corollary}
+
+\begin{prop}
+  If $\g$ is a semisimple Lie algebra
+  and $G$ is the connected Lie group
+  corresponding to $\g$, then
+  $\Der \g = \g$ and
+  $\Aut(\g) / {\Ad G}$ is discrete,
+  where $\Ad G = G / \mathcal{Z}(G)$.
+\end{prop}
+
+\begin{proof}
+  For any $x \in \g$, we have
+  an inner derivation $\ad_x$. The
+  natural morphism $\g \to \Der \g$
+  is injective since $\mathfrak{z}(\g) = 0$.
+  Now let $\delta : \g \to \g$ be a
+  derivation, so
+  \[
+    \delta[a, b]
+    = [\delta a, b] + [a, \delta b].
+  \]
+  Then $\ad_{\delta(x)} = [\delta, \ad_x] = \delta \ad_x - \ad_x \delta$,
+  where $\delta, \ad_x$ are operators
+  from $\End(\g)$. So we can view
+  $\g \subseteq \Der(\g)$ as an ideal.
+  Extend the Killing form to $\Der(\g)$
+  by setting
+  \[
+    K(\delta_1, \delta_2)
+    = \tr_\g(\delta_1 \delta_2).
+  \]
+  Let $I = \g^\perp \subseteq \Der(\g)$,
+  which is an ideal since $K$ is invariant.
+  The restriction of $K$ to $\g$ is
+  non-degenerate, so $I \cap \g = 0$.
+  Thus $\Der \g = I \oplus \g$. These
+  are ideals, so we have
+  $[I, \g] = 0$. Since
+  \[
+    \ad_{\delta(x)}
+    = [\delta, \ad_x] = 0
+  \]
+  for all $\delta \in I$, we have
+  $\delta(x) = 0$, so $I = 0$.
+\end{proof}
+
+\begin{example}
+  Let $\g = \mathfrak{u}(n)$ and
+  consider the trace form
+  $(x, y) = \tr(xy)$.
+  Note $\tr(xy) = -\tr(x \overline{y}^T)$, so
+  \[
+    \tr(x, x)
+    = -\sum_{i, j} |x_{i, j}|^2.
+  \]
+  In particular, we see that
+  the trace form is negative definite.
+\end{example}
+
+\begin{theorem}
+  Let $G$ be a compact real Lie group and
+  $\g = \Lie(G)$ (which is reductive).
+  Then the Killing form of $\g$ is
+  negative semidefinite with
+  $\ker K = \mathfrak{z}(\g)$. Moreover,
+  the Killing form of the semisimple
+  part $\g / \mathfrak{z}(\g)$
+  is negative definite. Conversely,
+  if $\g$ is a semisimple real Lie algebra
+  with negative definite Killing form, then
+  $\g$ is the Lie algebra of some compact
+  real Lie group.
+\end{theorem}
+
+\begin{proof}
+  We have proved that when $G$ is
+  compact, any complex representation
+  is unitary. So we have
+  $\rho : G \to \GL(V)$
+  where $\rho(G) \subseteq U(V)$.
+  Then we have
+  $\rho(\g) \subseteq \mathfrak{u}(V)$,
+  so the trace form $B_V(x, y)$
+  is negative semidefinite, and
+  $\ker B_V = \ker \rho$. Applying
+  this to the complexified adjoint
+  representation
+  $V = \g_\C$ implies that
+  the Killing form is negative
+  semidefinite and $\ker K = \mathfrak{z}(\g_\C)$.
+
+  Now assume $\g$ is a real Lie
+  algebra and $K$ is negative definite.
+  Let $G$ be the connected Lie group
+  for $\g$, and define $B(x, y) = -K(x, y)$,
+  which is positive definite and leaves
+  $\Ad(G)$ invariant. By
+  choosing an appropriate basis, we can
+  embed $\Ad(G) \subseteq \SO(\g)$.
+  We know that $\Ad(G)$ is the connected
+  component of the identity in
+  $\Aut(\g)$, and
+  $\Aut(\g) \subseteq \GL(\g)$ is a
+  closed Lie subgroup, so
+  $\Ad(G)$ is a closed Lie subgroup
+  of $\SO(\g)$. Thus $\Ad(G)$ is
+  compact.
+\end{proof}
+
+\begin{remark}
+  One can actually prove a stronger result:
+  Let $\g$ be a real Lie algebra with
+  negative definite Killing form.
+  Then any connected Lie group with
+  Lie algebra $\g$ is compact. In particular,
+  the simply-connected one is compact.
+\end{remark}
+
+\begin{exercise}
+  If $\g$ is a real Lie algebra with
+  positive definite Killing form, then
+  show that $\g = 0$.
+\end{exercise}
+
+\begin{theorem}
+  Let $\g$ be a complex semisimple Lie
+  algebra. Then there exists a real
+  subalgebra $\mathfrak{k}$ such that
+  $\mathfrak{k} \otimes \C = \g$ and
+  $\mathfrak{k}$ is the Lie algebra of a
+  compact Lie group $K$. This $\mathfrak{k}$
+  is known as a compact form of
+  $\g$, and it is unique up to
+  conjugation. If $G$ is a complex Lie
+  group corresponding to $\g$, then
+  one can choose $K \subseteq G$
+  (known as a compact form of $G$).
+\end{theorem}
+
+\begin{example}
+  For $\g = \mathfrak{sl}(n, \C)$,
+  we have $\mathfrak{k} = \mathfrak{su}(n)$.
+\end{example}
+
+\section{The Casimir Element}
+
+\begin{prop}
+  Let $\g$ be a Lie algebra and
+  $B$ a non-degenerate invariant symmetric
+  bilinear form on $\g$. Let
+  $\{x_i\}_{i = 1}^{\dim \g}$ be a basis
+  of $\g$ and
+  $\{x^i\}_{i = 1}^{\dim \g}$ the dual basis
+  with respect to $B$. Then
+  \[
+    C_B = \sum_i x_i x^i \in U(\g)
+  \]
+  does not depend on the choice of basis and
+  is central in $U(\g)$. It is called
+  the \emph{Casimir element} determined by
+  $B$. When $\g$ is semisimple, $C_K$ is
+  called the \emph{Casimir element} of $\g$.
+\end{prop}
+
+\begin{proof}
+  Define $I = \sum_{i = 1}^{\dim \g} (x_i \otimes x^i) \in \g \otimes \g$.
+  As an element of $\End(\g)$, it is the
+  identity operator.
+  Thus $I$ is $\ad_\g$-invariant.
+  Since the multiplication
+  map $\g \otimes \g \to U(\g)$ is a
+  morphism of representations, we get that
+  $C_B = \sum x_i x^i$ is $\ad_\g$-invariant,
+  so it is central.
+\end{proof}
+
+\begin{example}
+  For $\g = \mathfrak{sl}(2, \C)$,
+  we have $C = \frac{1}{2} h^2 + ef + fe$.
+\end{example}
+
+\begin{remark}
+  For simple Lie algebras, the invariant
+  bilinear form is unique up to a constant.
+  In particular, the Casimir element is
+  unique up to a constant in
+  this case.
+
+  To see this, let
+  $B_1(x, y)$ and $B_2(x, y)$ be two
+  bilinear forms on a simple Lie algebra
+  $\g$. Then they differ by an operator
+  $A : \g \to \g$ which is
+  $\ad_\g$-invariant. Since $\g$ is simple,
+  Schur's lemma implies $A$ is a constant.
+\end{remark}
+
+\begin{prop}
+  Let $V$ be a non-trivial irreducible
+  representation of a semisimple
+  Lie algebra $\g$. Then there exists a
+  central element $C_V \in \mathcal{Z}(U(\g))$
+  which acts by a non-zero constant on $V$
+  and which acts by $0$ on the
+  trivial representation.
+\end{prop}
+
+\begin{proof}
+  Let $B_V(x, y) = \tr(\rho_V(x) \rho_V(y))$.
+  If $B_V$ is non-degenerate, then we
+  can take $C_V = C_{B_V}$. In this
+  case, by
+  Schur's lemma we obtain the result since
+  \[
+    \tr(C_V)
+    = \sum \tr(x_i x^i)
+    = \dim V,
+  \]
+  so $C_V = \lambda \id$ implies that
+  $\lambda \ne 0$. In general,
+  let $I = \ker B_V \subseteq \g$. Then
+  $I$ is an ideal in $\g$ and
+  $I \ne \g$ (otherwise
+  $\rho(\g) \subseteq \gl(V)$
+  would be solvable,
+  which is not possible). Thus
+  $\g = I \oplus \g'$ for some ideal
+  $\g'$ which is semisimple, so
+  $B_V|_{\g'}$ is non-degenerate and
+  we can repeat the above procedure.
+\end{proof}
+
+\begin{remark}
+  One can prove the following stronger
+  result: The Casimir element
+  defined by the Killing form acts by a
+  nonzero constant in any non-trivial
+  representation.
+\end{remark}
+
+\section{Semisimple Elements}
+
+\begin{definition}
+  An element $x \in \g$ is called
+  \emph{semisimple} if $\ad_x \in \End(\g)$
+  is a semisimple operator. An
+  element $x \in \g$ is called
+  \emph{nilpotent} if $\ad_x$ is
+  nilpotent.
+\end{definition}
+
+\begin{theorem}
+  If $\g$ is a semisimple complex Lie
+  algebra, then any $x \in \g$ can be
+  uniquely written as
+  \[
+    x = x_s + x_n,
+  \]
+  where $x_s$ is semisimple,
+  $x_n$ is nilpotent, and
+  $[x_s, x_n] = 0$. Moreover, if for
+  some $y \in \g$ we have
+  $[x, y] = 0$, then $[x_s, y] = 0$.
+\end{theorem}
