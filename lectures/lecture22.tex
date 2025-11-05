@@ -1,0 +1,406 @@
+\chapter{Nov.~5 --- Cartan Subalgebras}
+
+\section{Semisimple Elements}
+
+\begin{definition}
+  An element $x \in \g$ is called
+  \emph{semisimple} if $\ad x \in \End(\g)$
+  is a semisimple operator. An
+  element $x \in \g$ is called
+  \emph{nilpotent} if $\ad x$ is
+  nilpotent.
+\end{definition}
+
+\begin{theorem}
+  If $\g$ is a semisimple complex Lie
+  algebra, then any $x \in \g$ can be
+  uniquely written as
+  \[
+    x = x_s + x_n,
+  \]
+  where $x_s$ is semisimple,
+  $x_n$ is nilpotent, and
+  $[x_s, x_n] = 0$. Moreover, if for
+  some $y \in \g$ we have
+  $[x, y] = 0$, then $[x_s, y] = 0$.
+\end{theorem}
+
+\begin{proof}
+  Uniqueness follows from uniqueness
+  in the Jordan decomposition: If
+  \[
+    x = x_s + x_n = x_s' + x_n',
+  \]
+  then
+  $(\ad x)_s = \ad x_s = \ad x_s'$, so
+  $\ad(x_s - x_s') = 0$. Thus
+  $x_s = x_s'$ since $\g$ is semisimple.
+
+  For existence, consider
+  $\ad x : \g \to \g$, which we can
+  decompose into its Jordan blocks, i.e.
+  \[
+    \g = \bigoplus \g_\lambda,
+  \]
+  where $(\ad x - \lambda \id)^n|_{\g_\lambda} = 0$
+  for $n \gg 0$. Now we use the following
+  lemma:
+  \begin{quote}
+    \vspace{-2em}
+    \begin{lemma}
+      $[\g_{\lambda}, \g_{\mu}] \subseteq \g_{\lambda + \mu}$.
+    \end{lemma}
+
+    \begin{proof}
+      By the Jacobi identity, we can write
+      \[
+        (\ad x - \lambda \id - \mu \id)
+        [y, z]
+        = [(\ad x - \lambda) y, z]
+        + [y, (\ad x - \mu) z]
+      \]
+      for $y \in \g_\lambda, z \in \g_\mu$.
+      Iterating this, we get that
+      \[
+        (\ad x - \lambda - \mu)^n[y, z]
+        = \sum_{k} \binom{n}{k}
+        [(\ad x - \lambda)^k y,
+        (\ad x - \mu)^{n - k} z].
+      \]
+      This vanishes for sufficiently
+      large $n$, so we get the result.
+    \end{proof}
+  \end{quote}
+  Write
+  $\ad x = (\ad x)_s + (\ad x)_n$, so
+  $(\ad x)_s|_{\g_\lambda} = \lambda$. The
+  lemma implies that
+  $(\ad x)_s$ is a derivation. Then
+  it must be an inner derivation, so
+  $(\ad x)_s = \ad x_s$ for some
+  $x_s \in \g$.
+\end{proof}
+
+\begin{corollary}
+  In any semisimple Lie algebra, there
+  exists nonzero semisimple elements.
+\end{corollary}
+
+\begin{proof}
+  If there are no nontrivial semisimple
+  elements, then $x = x_n$ for every
+  $x \in \g$. Then Engel's theorem,
+  $\g$ is nilpotent, contradicting
+  semisimplicity.
+\end{proof}
+
+\begin{definition}
+  A Lie subalgebra
+  $\mathfrak{h} \subseteq \g$ is called
+  \emph{toral} if it is commutative and
+  consists of semisimple elements.
+\end{definition}
+
+\begin{theorem}
+  Let $\g$ be a complex semisimple Lie
+  algebra and $\mathfrak{h}$ a toral
+  subalgebra. Let $(\cdot, \cdot)$ be a
+  non-degenerate invariant bilinear
+  form on $\g$ (e.g. the Killing form).
+  Then
+  \begin{enumerate}
+    \item $\g = \bigoplus_{\alpha \in \mathfrak{h}^*} \g_\alpha$,
+      where $\g_\alpha$ is a common
+      eigenspace for all operators
+      $\ad_h$, with $h \in \mathfrak{h}$,
+      with eigenvalue $\alpha$, i.e.
+      we have
+      \[
+        \ad_h x = \langle \alpha, h \rangle x, \quad x \in \g_\alpha.
+      \]
+      In particular, $\mathfrak{h} \subseteq \g_0$.
+    \item $[\g_\alpha, \g_\beta] \subseteq \g_{\alpha + \beta}$.
+    \item If $\alpha + \beta \ne 0$, then
+      $\g_\alpha, \g_\beta$ are orthogonal
+      with respect to $(\cdot, \cdot)$.
+    \item For every $\alpha$, the
+      form $(\cdot, \cdot)$ gives a
+      non-degenerate pairing
+      $\g_{\alpha} \otimes \g_{-\alpha} \to \C$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  (1) This follows directly from our
+  previous results.
+
+  (2) Let $y \in \g_\alpha$ and
+  $z \in \g_\beta$. We can write
+  \[
+    \ad_h [y, z]
+    = [\ad_h y, z] + [y, \ad_h z]
+    = [\langle h, \alpha \rangle y, z]
+    + [y, \langle h, \beta \rangle z]
+    = \langle h, \alpha + \beta \rangle [y, z],
+  \]
+  which proves the claim.
+
+  (3) Let $x \in \g_\alpha$
+  and $y \in \g_\beta$.
+  For any $h \in \mathfrak{h}$,
+  by the
+  invariance of $(\cdot, \cdot)$ we have
+  \[
+    0 = ([h, x], y) + (x, [h, y])
+    = (\langle h, \alpha \rangle x, y)
+    + (x, \langle h, \beta \rangle y)
+    = (\langle h, \alpha \rangle + \langle h, \beta \rangle)
+    (x, y),
+  \]
+  which gives $(x, y) = 0$ since
+  $\alpha + \beta \ne 0$.
+\end{proof}
+
+\begin{lemma}
+  We have the following:
+  \begin{enumerate}
+    \item The restriction of
+      $(\cdot, \cdot)$ to $\g_0$ is
+      non-degenerate.
+    \item If $x \in \g_0$ with
+      $x = x_s + x_n$, then
+      $x_s, x_n \in \g_0$.
+    \item $\g_0$ is a reductive
+      subalgebra of $\g$.
+  \end{enumerate}
+\end{lemma}
+
+\section{Cartan Subalgebras}
+
+\begin{definition}
+  Let $\g$ be a complex semisimple
+  Lie algebra. A \emph{Cartan subalgebra}
+  $\mathfrak{h} \subseteq \g$ is a toral
+  subalgebra which coincides with
+  its centralizer
+  $C(\mathfrak{h}) = \{x : [x, h] = 0 \text{ for all } h \in \mathfrak{h}\}$.
+\end{definition}
+
+\begin{example}
+  Let $\g = \mathfrak{sl}(n, \C)$. Then a
+  Cartan subalgebra is
+  \[
+    \mathfrak{h} =
+    \{\text{diagonal matrices with trace $0$}\}.
+  \]
+  If we take $h \in \mathfrak{h}$ such
+  with all eigenvalues distinct, then
+  $[x, h] = 0$ implies
+  \[
+    [h, E_{i, j}]
+    = (h_i - h_j) E_{i, j}
+  \]
+  where $h = \diag(h_1, \ldots, h_n)$, 
+  so $x$ is also diagonal. Thus
+  $C(\mathfrak{h}) = \mathfrak{h}$.
+\end{example}
+
+\begin{theorem}
+  Let $\mathfrak{h} \subseteq \g$ be a
+  maximal toral subalgebra. Then
+  $\mathfrak{h}$ is a Cartan subalgebra.
+\end{theorem}
+
+\begin{proof}
+  Let $\g = \bigoplus \g_\alpha$ for
+  $\ad_\mathfrak{h}$. We first show that
+  $\g_0 = C(\mathfrak{h})$ is toral, which will
+  imply that $C(\mathfrak{h}) = \mathfrak{h}$.
+  Note that for $x \in \g_0$,
+  we have ${\ad_x}|_{\g_0}$ is nilpotent
+  (otherwise, $x_s$ has a nonzero eigenvalue
+  and $x_s \in \g_0$ is a semisimple
+  element, so ${\ad_{x_s}}|_{\g_0} \ne 0$
+  implies $x_s \notin \mathfrak{h}$).
+  By Engel's theorem, $\g_0$ is
+  nilpotent, so $\g_0$ is
+  reductive, so $\g_0$ is commutative.
+
+  Now we show that any element
+  $x \in \g_0$ is semisimple. We show that
+  $x_n = 0$ for every $x$. Note that
+  $\ad_{x_n}$ is nilpotent and
+  $\g_0$ is commutative, so for
+  any $y \in \g_0$, we have
+  $\ad_{x_n} \ad_y$ is also nilpotent.
+  Then
+  \[
+    \tr_{\g_0}(\ad_{x_n} \ad_y) = 0.
+  \]
+  Since the Killing form is
+  $0$, we must have $\ad_{x_n} = 0$, so
+  $x_n = 0$.
+\end{proof}
+
+\begin{corollary}
+  For any complex semisimple Lie
+  algebra $\g$, there exists a
+  Cartan subalgebra.
+\end{corollary}
+
+\begin{definition}
+  Define the \emph{rank} of $\g$
+  to be $\rank(\g) = \dim \mathfrak{h}$.
+\end{definition}
+
+\begin{example}
+  $\rank(\mathfrak{sl}(n, \C)) = n - 1$.
+\end{example}
+
+\section{Root Decomposition}
+
+\begin{theorem}
+  Let $\g$ be a semisimple Lie algebra.
+  \begin{enumerate}
+    \item We have the following decomposition
+      for $\g$
+      (called the \emph{root decomposition}):
+      \[
+        \g = \mathfrak{h} \oplus
+        \bigoplus_{\alpha \in R} \g_\alpha,
+      \]
+      where $\g_\alpha = \{x : [h, x] = \langle \alpha, h \rangle x \text{ for all } x \in \mathfrak{h}\}$
+      and $R = \{\alpha \in \mathfrak{h}^* \setminus \{0\} : \g_\alpha \ne \{0\}\}$.
+      We call $R$ a \emph{root system} of
+      $\g$ and $\{\g_\alpha\}$
+      \emph{root subspaces.}
+    \item $[\g_\alpha, \g_\beta] \subseteq \g_{\alpha + \beta}$,
+      where $\g_0 = \mathfrak{h}$.
+    \item If $\alpha + \beta \ne 0$,
+      then $\g_\alpha, \g_\beta$ are
+      orthogonal with respect to the
+      Killing form.
+    \item For every $\alpha$, the
+      Killing form gives a non-degenerate
+      pairing $\g_\alpha \otimes \g_{-\alpha} \to \C$.
+      In particular, the restriction of
+      $K$ to $\mathfrak{h}$ is
+      non-degenerate.
+  \end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+  Let $\g_1, \dots, \g_n$ be simple
+  Lie algebras and $\g = \bigoplus \g_i$. Then
+  \begin{enumerate}
+    \item If $\mathfrak{h}_i \subseteq \g_i$
+      is a Cartan subalgebra of $\g_i$
+      and $R_i \subseteq \mathfrak{h}_i^*$
+      is a root system, then
+      $\mathfrak{h} = \bigoplus \mathfrak{h}_i$
+      is a Cartan subalgebra of $\g$ 
+      and $R = \bigsqcup_i R_i$ is a
+      root system of $\g$.
+    \item Every Cartan subalgebra in $\g$
+      has a decomposition
+      $\mathfrak{h} = \bigoplus \mathfrak{h}_i$
+      as above.
+  \end{enumerate}
+\end{theorem}
+
+\begin{example}
+  Let $\g = \mathfrak{sl}(n, \C)$
+  and $\mathfrak{h} = \{\text{diagonal matrices with trace $0$}\}$.
+  Define linear functionals
+  \[
+    e_i =
+    \begin{pmatrix}
+      h_1 & 0 & \cdots & 0 \\
+      0 & h_2 & \cdots & 0 \\
+      \vdots & \vdots & \ddots & \vdots \\
+      0 & 0 & \cdots & h_n
+    \end{pmatrix}
+    \longmapsto h_i.
+  \]
+  Note that $\sum e_i = 0$. We can write
+  $\mathfrak{h}^* = (\bigoplus_{i = 1}^n \C e_i) / \C(e_1 + \dots + e_n)$.
+  Then $E_{i, j}$ are eigenvectors
+  for $\ad_h$ for every $h \in \mathfrak{h}$,
+  since
+  \[
+    [h, E_{i, j}]
+    = (h_i - h_j) E_{i, j}
+    = (e_i - e_j)(h) E_{i, j}.
+  \]
+  Thus the root system is
+  \[
+    R = \{e_i - e_j : i \ne j\}
+    \subseteq \frac{\bigoplus_{i = 1}^n \C e_i}
+    {\C(e_1 + \dots + e_n)},
+  \]
+  with root subspaces
+  $\g_{e_i - e_j} = \C E_{i, j}$. The
+  Killing form on $\mathfrak{h}$ is given by
+  \[
+    (h, h')
+    = \sum_{i \ne j} (h_i - h_j) (h_i' - h_j')
+    = 2n \sum h_i h_i'
+    = 2n \tr(h h').
+  \]
+  Now we find the
+  dual pairing on $\mathfrak{h}^*$:
+  If $\lambda = \sum \lambda_i e_i \in \mathfrak{h}^*$, $\mu = \sum \mu_i e_i \in \mathfrak{h}^*$
+  with $\sum_i \lambda_i = \sum_i \mu_i = 0$, then
+  \[
+    (\lambda, \mu)
+    = \frac{1}{2n} \sum_i \lambda_i \mu_i.
+  \]
+  We have a natural isomorphism
+  $\mathfrak{h} \to \mathfrak{h}^*$ given by
+  $(\cdot, \cdot)$, which is defined by
+  \[
+    (\alpha, \beta)
+    = \langle H_\alpha \beta \rangle
+    = (H_\alpha, H_\beta)
+  \]
+  for $\alpha, \beta \in \mathfrak{h}^*$,
+  where $H_\alpha, H_\beta \in \mathfrak{h}$
+  are the corresponding elements.
+\end{example}
+
+\begin{lemma}
+  Let $e \in \g_\alpha$ and
+  $f \in \g_{-\alpha}$. Then
+  $[e, f] = (e, f) H_\alpha$.
+\end{lemma}
+
+\begin{proof}
+  By the invariance of $(\cdot, \cdot)$, for any $h \in \mathfrak{h}$
+  we have
+  \[
+    ([e, f], h)
+    = (e, [f, h])
+    = -(e, [h, f])
+    = \langle f, \alpha \rangle (e, f)
+    = (e, f) (h, H_\alpha),
+  \]
+  which proves the desired claim.
+\end{proof}
+
+\begin{lemma}
+  We have the following:
+  \begin{enumerate}
+    \item For $\alpha \in R$, we have
+      $(\alpha, \alpha) = (H_\alpha, H_\alpha) \ne 0$.
+    \item Let $e \in \g_\alpha$ and
+      $f \in \g_{-\alpha}$
+      such that $(e, f) = 2 / (\alpha, \alpha)$
+      and let $h_\alpha = 2H_\alpha / (\alpha, \alpha)$.
+      Then $\langle h_\alpha, \alpha \rangle = 2$
+      and $e, f, h_\alpha$ form an
+      $\mathfrak{sl}(2, \C)$-triple.
+    \item The $h_\alpha$ defined in
+      (2) does not depend on the choice of
+      bilinear form.
+  \end{enumerate}
+\end{lemma}
