@@ -360,7 +360,7 @@
   $(\cdot, \cdot)$, which is defined by
   \[
     (\alpha, \beta)
-    = \langle H_\alpha \beta \rangle
+    = \langle H_\alpha, \beta \rangle
     = (H_\alpha, H_\beta)
   \]
   for $\alpha, \beta \in \mathfrak{h}^*$,
@@ -368,7 +368,7 @@
   are the corresponding elements.
 \end{example}
 
-\begin{lemma}
+\begin{lemma}\label{lem:root-commutator}
   Let $e \in \g_\alpha$ and
   $f \in \g_{-\alpha}$. Then
   $[e, f] = (e, f) H_\alpha$.
@@ -386,21 +386,3 @@
   \]
   which proves the desired claim.
 \end{proof}
-
-\begin{lemma}
-  We have the following:
-  \begin{enumerate}
-    \item For $\alpha \in R$, we have
-      $(\alpha, \alpha) = (H_\alpha, H_\alpha) \ne 0$.
-    \item Let $e \in \g_\alpha$ and
-      $f \in \g_{-\alpha}$
-      such that $(e, f) = 2 / (\alpha, \alpha)$
-      and let $h_\alpha = 2H_\alpha / (\alpha, \alpha)$.
-      Then $\langle h_\alpha, \alpha \rangle = 2$
-      and $e, f, h_\alpha$ form an
-      $\mathfrak{sl}(2, \C)$-triple.
-    \item The $h_\alpha$ defined in
-      (2) does not depend on the choice of
-      bilinear form.
-  \end{enumerate}
-\end{lemma}
