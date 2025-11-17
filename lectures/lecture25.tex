@@ -1,0 +1,243 @@
+\chapter{Nov.~17 --- Weyl Chambers}
+
+\section{Weyl Chambers}
+
+\begin{definition}
+  Recall that the Weyl group $W$
+  is generated the reflections
+  $s_\alpha$ across the
+  hyperplane $L_\alpha$
+  (i.e. $\alpha^\perp$). A
+  \emph{Weyl chambers} $C$ is a
+  connected component of
+  $E \setminus \bigcup_{\alpha \in R} L_\alpha$.
+\end{definition}
+
+\begin{remark}
+  There is a one-to-one
+  correspondence between
+  $R_+$ (the set of positive roots),
+  $\Pi$ (the set of simple roots),
+  and Weyl chambers: Given a
+  Weyl chamber $C_+$, we can define
+  a set of positive roots
+  \[
+    R_+ = \{
+      \alpha \in R : (\alpha, t) > 0
+      \text{ for all } t \in C_+
+    \}.
+  \]
+  Conversely, given a
+  set $R_+$ of positive roots,
+  we can define a Weyl chamber
+  \[
+    C_+ =
+    \{
+      t \in E : (\alpha, t) > 0
+      \text{ for all } \alpha \in R_+
+    \}
+    = \{
+      t \in E : (\alpha, t) > 0
+      \text{ for all } \alpha \in \Pi
+    \}.
+  \]
+\end{remark}
+
+\begin{prop}
+  Let $C$ be a Weyl chamber. Then
+  \begin{enumerate}
+    \item $C$ is an unbounded
+      convex cone.
+    \item $\overline{C} \setminus C$
+      is a union of codimension
+      $1$ faces. These faces
+      $F_i \subseteq L_\alpha$
+      are called the
+      \emph{walls} of $C$, and
+      $\alpha \in \Pi$.
+  \end{enumerate}
+\end{prop}
+
+\begin{theorem}
+  The action of the Weyl group
+  $W$ on the Weyl chambers $\{C\}$
+  is transitive, i.e. if
+  $C, C'$ are Weyl chambers, there
+  there exists $w \in W$ such that
+  $w(C) = C'$.
+\end{theorem}
+
+\begin{proof}
+  Call a Weyl chamber
+  $C_1$ \emph{adjacent} to $C_2$
+  if they have a codimension $1$
+  face in common. Then:
+  \begin{enumerate}
+    \item Any two Weyl chambers
+      $C, C'$
+      are connected by a chain of
+      adjacent Weyl chambers.
+    \item If $C_1$ is adjacent to
+      $C_2$ via the common
+      codimension $1$ face
+      $\subseteq L_\alpha$, then
+      $C_1 = s_\alpha(C_2)$.
+  \end{enumerate}
+  (One can pick a line going through
+  $C, C'$ not going through the
+  origin, then the Weyl chambers
+  which this line intersects form a
+  chain which connects $C$ and $C'$.)
+  So let
+  \[
+    C = C_0, C_1, \ldots, C_k = C'
+  \]
+  be the chain of adjacent Weyl
+  chambers from $C$ to $C'$.
+  Let $L_{\alpha_i}$
+  be the codimension $1$ face
+  between $C_{i-1}$ and $C_i$ and
+  $s_{\alpha_i}$ the
+  corresponding reflection. Then
+  $w = s_{\alpha_k} \circ \dots \circ s_{\alpha_2} \circ s_{\alpha_1}$ takes
+  $C$ to $C'$.
+\end{proof}
+
+\begin{corollary}
+  Let $\Pi, \Pi'$ be two families
+  of simple roots. Then there
+  exists $w \in W$ with
+  $w(\Pi) = \Pi'$.
+\end{corollary}
+
+\begin{theorem}
+  Let $R, R_+, \Pi = \{\alpha_1, \dots, \alpha_r\}$
+  be fixed, and let
+  $s_1, \dots, s_r$ be the reflections
+  corresponding to $\alpha_1, \dots, \alpha_r$. Then
+  \begin{enumerate}
+    \item $s_1, \dots, s_r$ generates
+      $W$.
+    \item $W(\Pi) = R$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  (2) Fix a set $\Pi$ of simple roots,
+  and let $\alpha \in R$. Choose a
+  Weyl chamber with a face $\subseteq L_\alpha$.
+  Let $C_+$ be the Weyl chamber
+  corresponding to $\Pi$, then
+  there exists $w \in W$
+  such that $w(C_+) = C_\alpha$,
+  so $\alpha \in w(\Pi)$.
+
+  (1) We claim that for any
+  $s = s_\alpha \in W$,
+  there exist $s_{i_1}, \dots, s_{i_\ell} \in \{s_1, \dots, s_r\}$
+  such that
+  $s_{i_1} \circ \dots \circ s_{i_\ell} = s$.
+  Let $C = s(C_+)$, then we want
+  \[
+    (s_{i_1} \circ \dots \circ s_{i_\ell})(C_+) = C.
+  \]
+  We induct on the length of this chain.
+  Suppose $L_\alpha = s_\beta L_\gamma$
+  and
+  assume that
+  $s_\alpha, s_\beta$ are both
+  products of simple reflections.
+  Let $C_i$ be the chamber bounded
+  by $L_\alpha$ and $L_\beta$, and
+  let $C_{i + 1}$ be the chamber
+  bounded by $L_\beta$ and $L_\gamma$.
+  Then
+  we can write
+  \[
+    s_\gamma
+    = s_\beta \circ s_\alpha \circ s_\beta
+  \]
+  since $\alpha = s_\beta(\gamma)$.
+  Thus $s_\gamma$ is also a product
+  of simple reflections. So
+  we have chains
+  $C_{i + 1} \to C_+$,
+  $L_\gamma \to L_i$, and
+  $\gamma \to \alpha_i$, which
+  proves the inductive step.
+\end{proof}
+
+\begin{corollary}
+  $\langle s_1, \dots, s_r \rangle \Pi = R$.
+\end{corollary}
+
+\begin{definition}
+  Let $w \in W$. Define the
+  \emph{length}
+  \begin{align*}
+    \ell(w)
+    &= \text{number of hyperplanes separating $C_+$ and $w(C_+)$} \\
+    &= \text{number of roots $\alpha \in R_+$ with $w(\alpha) \in R_-$}.
+  \end{align*}
+\end{definition}
+
+\begin{theorem}
+  For $w \in W$, write
+  $w = s_{i_1} \circ \dots \circ s_{i_\ell}$
+  such that $\ell$ is minimal.
+  Then $\ell = \ell(w)$.
+\end{theorem}
+
+\begin{proof}
+  Let $C_0 = C_+$ and
+  $C_k = (s_{i_1} \circ \dots \circ s_{i_k})(C_+)$.
+  Let $\beta_k = (s_{i_1} \circ \dots \circ s_{i_{k - 1}})(\alpha_{i_k})$.
+  Then
+  \[
+    C_k = s_{\alpha_{i_k}}(C_{k - 1})
+  \]
+  since
+  $C_k = (s_{i_1} \circ \dots \circ s_{i_{k - 1}})(s_{i_k} C_+)$,
+  $\beta_k = (s_{i_1} \circ \dots \circ s_{i_{k - 1}})(\alpha_{i_k})$,
+  and $C_{k - 1} = (s_{i_1} \circ \dots \circ s_{i_{k - 1}})(C_+)$.
+  This proves that
+  $\ell(w) \le \ell$.
+  On the other hand, we have
+  $\beta_k \ne \pm \beta_j$, since
+  otherwise for $j > k$,
+  \[
+    \alpha_{i_k}
+    = \pm (s_{i_1} \circ \dots \circ s_{i_{j - 1}})(\alpha_{i_j}),
+  \]
+  so $s_{i_k} = (s_{i_1} \circ \dots \circ s_{i_{j - 1}}) \circ s_{i_j} \circ (s_{i_1} \circ \dots \circ s_{i_{j - 1}})^{-1} = s_{i_k} \circ \dots \circ s_{i_{j - 1}} \circ s_{i_j} \circ s_{i_{j - 1}} \circ \dots \circ s_{i_k}$, so
+  \[
+    w = s_{i_1} \circ \dots \circ s_{i_{k - 1}} \circ s_{i_{k}} \circ \dots \circ s_{i_{j - 1}} \circ (s_{i_j} \circ \dots \circ s_{i_{k + 1}}) \circ (s_{i_{k + 1}} \circ \dots \circ s_{i_j}) \circ \dots \circ s_{i_\ell}.
+  \]
+  The parts in parentheses can be
+  canceled, contradicting the
+  minimality of $\ell$.
+  So $\ell(w) \ge \ell$.
+\end{proof}
+
+\begin{corollary}
+  If $w(C_+) = C_+$, then $w = 1$.
+\end{corollary}
+
+\section{Root Lattices}
+\begin{definition}
+  Define the following lattices
+  (note that these are in fact all
+  lattices):
+  \begin{enumerate}
+    \item The \emph{root lattice}
+      ($\subseteq E$)
+      is the abelian group generated
+      by the roots.
+    \item The \emph{coroot lattice}
+      ($\subseteq E^*$)
+      is the abelian group generated
+      by the coroots.
+    \item The weight lattice is
+      $\{\lambda \in E : (\lambda, \alpha) \in \Z\} \subseteq E$.
+  \end{enumerate}
+\end{definition}
