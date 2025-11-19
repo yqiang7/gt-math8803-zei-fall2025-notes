@@ -1,0 +1,440 @@
+\chapter{Nov.~19 --- Classification of Semisimple Lie Algebras}
+
+\section{Kirillov Exercise 6.4}
+
+\begin{exercise}[Kirillov Exercise 6.4, updated]
+  Let $\mathfrak{h} \subseteq \mathfrak{so}(4, \C)$
+  be the subalgebra
+  \[
+    \begin{pmatrix}
+      0 & -a & 0 & 0 \\
+      a & 0 & 0 & 0 \\
+      0 & 0 & 0 & b \\
+      0 & 0 & -b & 0
+    \end{pmatrix}.
+  \]
+  Show that it is a Cartan subalgebra
+  and find the root decomposition.
+\end{exercise}
+
+\section{More on Simple Root Systems}
+
+\begin{remark}
+  So far, we have written
+  \[
+    R = R_+ \sqcup R_-
+  \]
+  and $\Pi = \{\alpha_1, \dots, \alpha_r\} \subseteq R_+$,
+  where we can recover
+  the above decomposition from $\Pi$.
+  Moreover, all systems of
+  simple roots are related to each
+  other by the action of $W$.
+\end{remark}
+
+\begin{definition}
+  A root system is called \emph{reducible}
+  if it can be presented as
+  $R = R_1 \sqcup R_2$, where
+  $R_1 \perp R_2$ (with respect
+  to the Euclidean inner product on
+  $E$). Otherwise, it it
+  called \emph{irreducible}.
+\end{definition}
+
+\begin{example}
+  The root system $A_1 \cup A_1$
+  is reducible.
+\end{example}
+
+\begin{lemma}
+  Let $R$ be a reduced root system
+  with a fixed polarization.
+  Let $\Pi$ be the corresponding
+  simple roots. Then:
+  \begin{enumerate}
+    \item If $R$ is reducible with
+      $R = R_1 \sqcup R_2$, then
+      $\Pi = \Pi_1 \sqcup \Pi_2$,
+      where $\Pi_i = \Pi \cap R_i$
+      for $i = 1, 2$.
+    \item If $\Pi = \Pi_1 \sqcup \Pi_2$
+      with $\Pi_1 \perp \Pi_2$, then
+      $R = R_1 \sqcup R_2$ with
+      $R_1 \perp R_2$.
+  \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+  (1) This is obvious.
+
+  (2) If $\alpha \in \Pi_1$ and
+  $\beta \in \Pi_2$, then
+  $s_\alpha(\beta) = \beta$.
+  So $W = W_1 \times W_2$, and
+  \[R = W(\Pi_1 \sqcup \Pi_2) = W_1 \Pi_1 \sqcup W_2 \Pi_2,\]
+  so we can take $R_1 = W_1 \Pi_1$
+  and $R_2 = W_2 \Pi_2$.
+\end{proof}
+
+\begin{definition}
+  A \emph{Cartan matrix} of a
+  simple root system $\Pi \subseteq R$
+  is the $r \times r$ matrix $A = \{a_{i, j}\}_{i, j = 1}^r$, where
+  $r$ is the rank and
+  \[
+    a_{i, j} = n_{\alpha_j, \alpha_i}
+    = \langle \alpha_i^\vee, \alpha_j \rangle
+    = \frac{2(\alpha_i, \alpha_j)}{(\alpha_i, \alpha_i)}.
+  \]
+\end{definition}
+
+\begin{lemma}
+  We have the following:
+  \begin{enumerate}
+    \item $a_{i, i} = 2$ for all $i$.
+    \item For $i \ne j$,
+      $a_{i, j}$ is a non-positive
+      integer.
+    \item For all $i \ne j$,
+      $a_{i, j} a_{j, i} = 4\cos^2 \varphi$,
+      where $\varphi$ is the angle
+      between $\alpha_i, \alpha_j$.
+      If $\varphi \ne \pi / 2$, then
+      \[
+        \frac{|\alpha_i|^2}{|\alpha_j|^2}
+        = \frac{a_{j, i}}{a_{i, j}}.
+      \]
+  \end{enumerate}
+\end{lemma}
+
+\begin{example}
+  For $A_n$ with basis
+  $\{e_1, \dots, e_n\}$ and
+  $\alpha_1 = e_1 - e_2$, \dots,
+  $\alpha_{n - 1} = e_{n - 1} - e_n$,
+  we have
+  \[
+    A =
+    \begin{bmatrix}
+      2 & -1 & 0 & \cdots & 0 \\
+      -1 & 2 & -1 & \cdots & 0 \\
+      0 & -1 & 2 & \cdots & 0 \\
+      \vdots & \vdots & \vdots & \ddots & -1 \\
+      0 & 0 & 0 & -1 & 2
+    \end{bmatrix}
+  \]
+\end{example}
+
+\section{Dynkin Diagrams}
+
+\begin{definition}
+  Let $\Pi$ be a set of
+  simple roots of $R$.
+  A \emph{Dynkin diagram}
+  for $\Pi$ is a graph defined by:
+  \begin{enumerate}
+    \item For each simple root
+      $\alpha_i$, we construct
+      a vertex $v_i$ of the diagram.
+    \item For all $\alpha_i \ne \alpha_j$,
+      we connect them with
+      $n$ edges as follows:
+      \begin{enumerate}[(i)]
+        \item $\varphi = \pi / 2$:
+          $n = 0$ (not connected),
+        \item $\varphi = 2\pi / 3$:
+          $n = 1$ ($A_2$ system),
+        \item $\varphi = 3\pi / 4$:
+          $n = 2$ ($B_2$ system),
+        \item $\varphi = 5\pi / 6$:
+          $n = 3$ ($G_2$ system).
+      \end{enumerate}
+    \item For any pair of distinct
+      simple roots $\alpha_i \ne \alpha_j$
+      with $|\alpha_i| \ne |\alpha_j|$,
+      we oriented the corresponding
+      multiple edge by putting the
+      arrow pointing in the direction
+      of the shorter root.
+  \end{enumerate}
+\end{definition}
+
+\begin{theorem}
+  Let $\Pi \subseteq R$ be a set of
+  simple roots and assumed that $R$ 
+  is reduced. Then:
+  \begin{enumerate}
+    \item The Dynkin diagram of
+      $R$ is connected if and only if
+      $R$ is irreducible.
+    \item The Dynkin diagram
+      determines the Cartan matrix.
+    \item $R$ is determined by its
+      Dynkin diagram up to isomorphism.
+  \end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+  Let $R$ be reduced and irreducible.
+  Then its Dynkin diagram corresponds
+  to one of the following types:
+  \begin{enumerate}
+    \item $A_n$: \dynkin{A}{}
+      (corresponding to $\mathfrak{sl}(n + 1)$),
+    \item $B_n$ ($n \ge 2$):
+      \dynkin{B}{} (corresponding to
+      $\mathfrak{so}(2n + 1)$),
+    \item $C_n$ ($n \ge 2$):
+      \dynkin{C}{} (corresponding to
+      $\mathfrak{sp}(n)$),
+    \item $D_n$ ($n \ge 4$):
+      \dynkin{D}{} (corresponding to
+      $\mathfrak{so}(2n)$),
+    \item $E_6$: \dynkin{E}{6},
+    \item $E_7$: \dynkin{E}{7},
+    \item $E_8$: \dynkin{E}{8},
+    \item $F_4$: \dynkin{F}{4},
+    \item $G_2$: \reflectbox{\dynkin{G}{2}}.
+  \end{enumerate}
+\end{theorem}
+
+\begin{remark}
+  Recall that
+  $\mathfrak{sl}(2, \C) \cong \mathfrak{so}(3, \C) \cong \mathfrak{sp}(1, \C)$, so
+  \[
+    A_1 = B_1 = C_1.
+  \]
+  Similarly, we have
+  $\mathfrak{so}(4, \C) \cong \mathfrak{sl}(2, \C) \oplus \mathfrak{sl}(2, \C)$,
+  so
+  \[
+    D_2 = A_1 \cup A_1.
+  \]
+  Finally, $\mathfrak{so}(6, \C) \cong \mathfrak{sl}(4, \C)$,
+  so we have
+  \[
+    D_3 = A_3.
+  \]
+\end{remark}
+
+\begin{remark}
+  The cases $A, D, E$ are called
+  \emph{simply laced}.
+\end{remark}
+
+\begin{corollary}
+  If $R$ is a reduced root system,
+  then $(\alpha, \alpha)$ can take
+  at most two different values.
+  Moreover,
+  $m = \max(\alpha, \alpha) / {\min(\alpha, \alpha)}$
+  is the maximal multiplicity
+  of an edge in the Dynkin diagram.
+  (so $m = 1$ for $A, D, E$,
+  $m = 2$ for $B, C, F$, and
+  $m = 3$ for $G$).
+\end{corollary}
+
+\begin{remark}
+  We call the
+  $\alpha$ with larger
+  $(\alpha, \alpha)$
+  the \emph{long roots}, and
+  the $\alpha$ with smaller
+  $(\alpha, \alpha)$
+  the \emph{short roots}.
+\end{remark}
+
+\section{Classification of Semisimple Lie Algebras}
+
+\begin{theorem}
+  Let $\g$ be a complex semismple
+  Lie algebra with root system
+  $R \subseteq \mathfrak{h}^*$, and
+  let $(\cdot, \cdot)$ be a
+  nondegenerate bilinear form
+  on $\g$. Fix a polarization
+  $R = R_+ \sqcup R_-$ and let
+  $\Pi = \{\alpha_1, \dots, \alpha_r\}$
+  be a simple root system. Then
+  \begin{enumerate}
+    \item Define subalgebras
+      $\mathfrak{n}_{\pm} = \bigoplus_{\alpha \in R_{\pm}} \g_\alpha$
+      in $\g$. Then
+      $\g = \mathfrak{n}_- \oplus \mathfrak{h} \oplus \mathfrak{n}_+$
+      (as vector spaces).
+    \item Let $e_i \in \g_{\alpha_i}$,
+      $f_i \in \g_{-\alpha_i}$, and
+      $h_i = h_{\alpha_i}$, and
+      normalize $e_i, f_i$ so that
+      \[
+        (e_i, f_i) = \frac{2}{(\alpha_i, \alpha_i)}.
+      \] 
+      Then $e_1, \dots, e_r$
+      generate $\mathfrak{n}_+$,
+      $f_1, \dots, f_r$ generate
+      $\mathfrak{n}_-$, and
+      $h_1, \dots, h_r$ is a basis
+      of $\mathfrak{h}$.
+    \item (Serre relations)
+      The elements
+      $\{e_i, h_i, f_i\}_{i = 1}^r$
+      satisfy the following relations:
+      \[
+        [h_i, h_j] = 0, \quad
+        [e_i, f_j] = \delta_{i, j} h_i,
+        \quad
+        [h_i, e_j] = a_{i, j} e_j,
+        \quad [h_i, f_j] = -a_{i, j} f_j,
+      \]
+      where the $a_{i, j}$ are the
+      entries of the Cartan matrix.
+      Moreover,
+      \[
+        \ad_{e_i}^{1 - a_{i, j}}(e_j) = 0 \quad \text{and} \quad
+        \ad_{f_i}^{1 - a_{i, j}}(f_j) = 0.
+      \]
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  (1) This follows immediately
+  from $[\g_\alpha, \g_\beta] \subseteq \g_{\alpha + \beta}$.
+
+  (2) We use the following lemma:
+  \begin{quote}
+    \vspace{-2em}
+    \begin{lemma}
+      Let $R$ be a reduced root system
+      and $R = R_+ \sqcup R_-$
+      with simple roots
+      $\{\alpha_1, \dots, \alpha_r\}$.
+      If $\alpha$ is a positive
+      root which is not simple, then
+      $\alpha = \beta + \alpha_i$
+      for some positive root $\alpha_i$.
+    \end{lemma}
+
+    \begin{proof}
+      Let $(\alpha, \alpha_i)$. If
+      all of these products are
+      non-positive, then
+      $\{\alpha, \alpha_1, \dots, \alpha_r\}$
+      are linearly independent, which
+      is a contradiction. So let
+      $i$ be such that
+      $(\alpha, \alpha_i) > 0$.
+      Then $(\alpha, -\alpha_i) < 0$,
+      so $\beta = \alpha - \alpha_i$ is
+      a root. Thus
+      $\alpha = \beta + \alpha_i$,
+      and it is obvious that $\alpha_i$
+      is positive.
+    \end{proof}
+  \end{quote}
+  The lemma then implies (2) by
+  induction.
+
+  (3) We have already seen the
+  commutation relations, so
+  it remains to prove the
+  adjoint formulas. Consider
+  $\bigoplus_{k \in \Z} \g_{\alpha_j + k\alpha_i} \subseteq \g$,
+  which is a module for
+  $\mathfrak{sl}(2, \C)_i$
+  generated by $e_i, f_i, h_i$.
+  Note that $\ad_{e_i} f_j = 0$ for $i \ne j$,
+  and $\mathrm{span}\{f_j\} = \g_{-\alpha_j}$.
+  Since $f_j$ is the highest
+  weight vector $v_\lambda$, we have
+  \[
+    [h_i, f_j] = -a_{i, j} f_j,
+  \]
+  where $-a_{i, j} = \lambda$.
+  Now apply $f_j^{\lambda + 1} v_\lambda = 0$
+  (from the representation theory of
+  $\mathfrak{sl}(2, \C)$)
+  to conclude.
+\end{proof}
+
+\begin{theorem}
+  Let $R$ be an irreducible root
+  system with polarization
+  $R = R_+ \sqcup R_-$ and
+  $\Pi = \{\alpha_1, \dots, \alpha_r\}$.
+  Denote by $\g(R)$ the complex
+  Lie algebra with generators
+  $\{e_i, f_i, h_i\}_{i = 1}^r$
+  satisfying the Serre relations.
+  Then $\g$ is a finite-dimensional
+  semisimple Lie algebra
+  with root system $R$.
+\end{theorem}
+
+\section{Representations of Semisimple Lie Algebras}
+
+\begin{definition}
+  Let $\lambda \in \mathfrak{h}^*$
+  and $V$ a representation of $\g$
+  (possibly infinite-dimensional).
+  Then $v \in V$ is said to have
+  \emph{weight} $\lambda$ if
+  $hv = \lambda(h) v$ for all $h \in \mathfrak{h}$.
+  Such vectors are called \emph{weight vectors},
+  and the subspace generated by all
+  such $v$ is denoted by
+  $V[\lambda]$, called the
+  \emph{weight subspace}.
+  The set of weights in $V$ is
+  denoted by $P(V)$.
+\end{definition}
+
+\begin{remark}
+  Note that
+  $\g_\alpha V[\lambda] \subseteq V[\lambda + \alpha]$
+  since $[h, f] = \alpha(h) f$.
+\end{remark}
+
+\begin{definition}
+  Let $V' \subseteq V$ be the span of
+  all weight vectors, i.e.
+  $V' = \bigoplus_{\lambda \in \mathfrak{h}^*} V[\lambda]$.
+  If $V' = V$, then we say that
+  $V$ has \emph{weight decomposition}
+  (with respect to $\mathfrak{h} \subseteq \mathfrak{g}$).
+\end{definition}
+
+\begin{prop}
+  Any finite-dimensional representation
+  $V$ of $\g$ has weight decomposition.
+  Moreover, all weights of $V$ are
+  integral, i.e.
+  $P(V)$ is a finite subset
+  in the weight lattice $P$.
+\end{prop}
+
+\begin{proof}
+  For every $i = 1, \dots, r$,
+  we can view
+  $V$ as a representation for
+  the $(\mathfrak{sl}_2)_i$-triple.
+  Since $h_i$ acts semisimply on
+  $V$, we know $V$ has weight
+  decomposition such that the
+  eigenvalues of $h_i$ are integers.
+  Since
+  $\lambda(h_i)
+    = \langle \lambda, \alpha_i^\vee \rangle \in \Z$,
+  we get that $\lambda \in P$,
+  as desired.
+\end{proof}
+
+\begin{definition}
+  A vector $v \in V[\lambda]$
+  is called a \emph{highest weight vector}
+  of weight $\lambda$ if
+  $e_i v = 0$ for all $i$
+  (i.e. if we have
+  $\mathfrak{n}_+ v = 0$).
+\end{definition}

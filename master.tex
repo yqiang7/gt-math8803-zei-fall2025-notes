@@ -12,6 +12,16 @@
 \usepackage[shortlabels, inline]{enumitem}
 \usepackage{hyperref}
 \usepackage{tikz-cd}
+\usepackage{etoolbox}
+\usepackage{dynkin-diagrams}
+
+\def\row#1/#2!{#1_{\IfStrEq{#2}{}{n}{#2}} & \dynkin{#1}{#2}\\}
+\newcommand{\tble}[1]{
+   \renewcommand*\do[1]{\row##1!}
+   \[
+      \begin{array}{ll}\docsvlist{#1}\end{array}
+   \]
+}
 
 \usepackage[overload]{textcase}
 
@@ -145,4 +155,5 @@
   \input{lectures/lecture23.tex}
   \input{lectures/lecture24.tex}
   \input{lectures/lecture25.tex}
+  \input{lectures/lecture26.tex}
 \end{document}
